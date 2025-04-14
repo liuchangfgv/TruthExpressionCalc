@@ -31,6 +31,11 @@ typedef struct {
 }yyTypes;
 %}
 
+%left '~' '>'
+%left '+'
+%left '*'
+%right '!'
+
 %parse-param {expr_t **root}
 %type <expr_t> expr
 
