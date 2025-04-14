@@ -17,6 +17,9 @@ int yylex(){
             a!='B' && a!='C' && a!='D'){
                 continue;
         }
+        if(a >= 'A' && a <= 'D'){
+            a+=32;
+        }
         return a;
     }
 }
@@ -101,29 +104,5 @@ expr: '(' expr ')' {
         $$->right = NULL;
         $$->op = 'd';
         useD = true;
-    }
-    | 'A' {
-        $$ = malloc(sizeof(expr_t));
-        $$->left = NULL;
-        $$->right = NULL;
-        $$->op = 'a';
-    }
-    | 'B' {
-        $$ = malloc(sizeof(expr_t));
-        $$->left = NULL;
-        $$->right = NULL;
-        $$->op = 'b';
-    }
-    | 'C' {
-        $$ = malloc(sizeof(expr_t));
-        $$->left = NULL;
-        $$->right = NULL;
-        $$->op = 'c';
-    }
-    | 'D' {
-        $$= malloc(sizeof(expr_t));
-        $$->left = NULL;
-        $$->right = NULL;
-        $$->op = 'd';
     }
 %%
